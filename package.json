@@ -1,0 +1,27 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "Liri App",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NosillaMarie/liri-node-app.git"
+  },
+  "keywords": [
+    "liri"
+  ],
+  "author": "Nosilla Marie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NosillaMarie/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/NosillaMarie/liri-node-app#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "omdb": "^0.8.0",
+    "twitter": "^1.7.1"
+  }
+}
