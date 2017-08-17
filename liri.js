@@ -28,8 +28,6 @@ function twitterTweets() {
         else if (!error && response.statusCode == 200) {
             for (var i = tweets.length - 1; i > -1; i--) {
                 console.log(tweets[i].created_at + " " + "TWEET # " + (i + 1) + ": " + tweets[i].text);
-
-
             }
             //            console.log(tweets[0].text);
         }
