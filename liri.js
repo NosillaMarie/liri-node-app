@@ -6,7 +6,7 @@ var fs = require('fs');
 var request = require('request');
 //global variables to use
 var second = process.argv[2];
-var third = process.argv[3];
+var third = process.argv.slice(3).join('+');
 //end of global variables
 //twitter npm gives you the most recent 20 tweets associated 
 function twitterTweets() {
@@ -17,7 +17,8 @@ function twitterTweets() {
         , access_token_secret: keys.twitterKeys.access_token_secret
     });
     var params = {
-        screen_name: '@thinkgeek'
+        screen_name: '@nosilla_marie',
+        count: 20
     };
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (error) {
@@ -25,8 +26,10 @@ function twitterTweets() {
         }
         //if there is no error and the status code is 200 loop through the most recent 20 tweets of the user provided.
         else if (!error && response.statusCode == 200) {
-            for (var i = 19; i >= 0; i--) {
-                console.log("TWEETS " + (i + 1) + ": " + tweets[i].text);
+            for (var i = tweets.length - 1; i > -1; i--) {
+                console.log(tweets[i].created_at + " " + "TWEET # " + (i + 1) + ": " + tweets[i].text);
+                
+                
             }
             //            console.log(tweets[0].text);
         }
@@ -73,9 +76,9 @@ function movie() {
     }
     var queryURL = "http://www.omdbapi.com/?apikey=40e9cece&t=" + third + "&y=&plot=short&r=json";
     console.log(queryURL);
-    request(queryURL, function (error, response, body) {
+    request(queryURL, function (error, response, rbody) {
         if (!error && response.statusCode == 200 && second === "movie-this") {
-            body = JSON.parse(body);
+            body = JSON.parse(rbody);
             console.log("\nMovie Title: " + body.Title + "\n ");
             console.log("Year Released: " + body.Released + "\n ");
             console.log("IMDB Rating: " + body.Rated + "\n ");
